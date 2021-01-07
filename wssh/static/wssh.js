@@ -45,7 +45,7 @@ WSSHClient.prototype._generateEndpoint = function(options) {
     } else {
         var protocol = 'ws://';
     }
-    var endpoint = protocol + window.location.host +
+    var endpoint = protocol + "192.168.131.26:5000" +
         '/wssh/' + encodeURIComponent(options.hostname) + '/' +
         encodeURIComponent(options.username);
     if (options.authentication_method == 'password') {
@@ -84,7 +84,8 @@ WSSHClient.prototype.connect = function(options) {
     };
 
     this._connection.onmessage = function (evt) {
-        var data = JSON.parse(evt.data.toString());
+		var key = "qXSdHWfbSZaaLeHBRhLgxBiG";
+        var data = JSON.parse(DES3.decrypt(key,evt.data.toString()));
         if (data.error !== undefined) {
             options.onError(data.error);
         }
@@ -99,5 +100,6 @@ WSSHClient.prototype.connect = function(options) {
 };
 
 WSSHClient.prototype.send = function(data) {
-    this._connection.send(JSON.stringify({'data': data}));
+	var key = "qXSdHWfbSZaaLeHBRhLgxBiG";
+    this._connection.send(DES3.encrypt(key,JSON.stringify({'data': data})));
 };

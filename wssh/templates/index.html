@@ -4,8 +4,10 @@
         <meta charset="utf-8">
         <title>wssh</title>
 
-        <link href="{{url_for('static', filename='bootstrap.min.css')}}" rel="stylesheet" />
-        <link href="{{url_for('static', filename='style.css')}}" rel="stylesheet" />
+        <link href="../static/bootstrap.min.css" rel="stylesheet" />
+        <link href="../static/style.css" rel="stylesheet" />
+		<script type="text/javascript" src="../static/Base64.js"></script>
+        <script type="text/javascript" src="../static/DES3.js"></script>
     </head>
 
     <body>
@@ -135,11 +137,11 @@
 
         </div>
 
-        <script type="application/javascript" src="{{url_for('static', filename='jquery.min.js')}}">
+        <script type="application/javascript" src="../static/jquery.min.js">
         </script>
-        <script type="application/javascript" src="{{url_for('static', filename='term.js')}}">
+        <script type="application/javascript" src="../static/term.js">
         </script>
-        <script type="application/javascript" src="{{url_for('static', filename='wssh.js')}}">
+        <script type="application/javascript" src="../static/wssh.js">
         </script>
         <script type="application/javascript">
             function openTerminal(options) {
